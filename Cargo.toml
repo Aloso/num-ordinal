@@ -1,0 +1,18 @@
+[package]
+name = "num-ordinal"
+description = "Ordinal number types"
+documentation = "https://docs.rs/num-ordinal"
+repository = "https://github.com/Aloso/num-ordinal"
+homepage = "https://github.com/Aloso/num-ordinal"
+readme = "README.md"
+version = "0.1.0"
+edition = "2018"
+license = "MIT"
+keywords = ["numerics", "mathematics", "ordinal", "cardinal"]
+categories = ["mathematics"]
+resolver = "2"
+
+# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+
+[dependencies]
+serde = { version = "1", optional = true }
