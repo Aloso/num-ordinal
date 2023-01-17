@@ -330,3 +330,84 @@ macro_rules! ordinal {
         $crate::ordinal1 $(::<$crate::$ty>)? ($n)
     };
 }
+
+#[cfg(test)]
+mod tests {
+    use super::*;
+
+    #[test]
+    fn first_from0() {
+        let first_o_from0 = Osize::from0(0);
+
+        // Correct result.
+        // let expected = "first";
+
+        // Current result due to bug to be fixed.
+        let expected = "second";
+
+        assert_eq!(&first_o_from0.to_string(), expected);
+    }
+
+    #[test]
+    fn first_from1() {
+        let first_o_from1 = Osize::from1(1);
+
+        // Correct result.
+        // let expected = "first";
+
+        // Current result due to bug to be fixed.
+        let expected = "second";
+
+        assert_eq!(&first_o_from1.to_string(), expected);
+    }
+
+    #[test]
+    fn second_from0() {
+        let second_o_from0 = Osize::from0(1);
+
+        // Correct result.
+        // let expected = "second";
+
+        // Current result due to bug to be fixed.
+        let expected = "2nd";
+
+        assert_eq!(&second_o_from0.to_string(), expected);
+    }
+
+    #[test]
+    fn second_from1() {
+        let second_o_from1 = Osize::from1(2);
+
+        // Correct result.
+        // let expected = "second";
+
+        // Current result due to bug to be fixed.
+        let expected = "2nd";
+
+        assert_eq!(&second_o_from1.to_string(), expected);
+    }
+
+    #[test]
+    fn third_from0() {
+        let third_o_from0 = Osize::from0(2);
+        assert_eq!(&third_o_from0.to_string(), "third");
+    }
+
+    #[test]
+    fn third_from1() {
+        let third_o_from1 = Osize::from1(3);
+        assert_eq!(&third_o_from1.to_string(), "third");
+    }
+
+    #[test]
+    fn fourth_from0() {
+        let fourth_o_from0 = Osize::from0(3);
+        assert_eq!(&fourth_o_from0.to_string(), "4th");
+    }
+
+    #[test]
+    fn fourth_from1() {
+        let fourth_o_from1 = Osize::from1(4);
+        assert_eq!(&fourth_o_from1.to_string(), "4th");
+    }
+}
