@@ -215,8 +215,8 @@ macro_rules! impl_ordinal {
         impl fmt::Debug for $t {
             fn fmt(&self, f: &mut fmt::Formatter<'_>) -> fmt::Result {
                 match self.0 + 1 {
-                    0 => write!(f, "first"),
-                    1 => write!(f, "second"),
+                    1 => write!(f, "first"),
+                    2 => write!(f, "second"),
                     3 => write!(f, "third"),
                     n => {
                         let two_digits = n % 100;
@@ -339,52 +339,26 @@ mod tests {
     fn first_from0() {
         let first_o_from0 = Osize::from0(0);
 
-        // Correct result.
-        // let expected = "first";
-
-        // Current result due to bug to be fixed.
-        let expected = "second";
-
-        assert_eq!(&first_o_from0.to_string(), expected);
+        assert_eq!(&first_o_from0.to_string(), "first");
     }
 
     #[test]
     fn first_from1() {
         let first_o_from1 = Osize::from1(1);
-
-        // Correct result.
-        // let expected = "first";
-
-        // Current result due to bug to be fixed.
-        let expected = "second";
-
-        assert_eq!(&first_o_from1.to_string(), expected);
+        assert_eq!(&first_o_from1.to_string(), "first");
     }
 
     #[test]
     fn second_from0() {
         let second_o_from0 = Osize::from0(1);
-
-        // Correct result.
-        // let expected = "second";
-
-        // Current result due to bug to be fixed.
-        let expected = "2nd";
-
-        assert_eq!(&second_o_from0.to_string(), expected);
+        assert_eq!(&second_o_from0.to_string(), "second");
     }
 
     #[test]
     fn second_from1() {
         let second_o_from1 = Osize::from1(2);
 
-        // Correct result.
-        // let expected = "second";
-
-        // Current result due to bug to be fixed.
-        let expected = "2nd";
-
-        assert_eq!(&second_o_from1.to_string(), expected);
+        assert_eq!(&second_o_from1.to_string(), "second");
     }
 
     #[test]
