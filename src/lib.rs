@@ -215,8 +215,8 @@ macro_rules! impl_ordinal {
         impl fmt::Debug for $t {
             fn fmt(&self, f: &mut fmt::Formatter<'_>) -> fmt::Result {
                 match self.0 + 1 {
-                    0 => write!(f, "first"),
-                    1 => write!(f, "second"),
+                    1 => write!(f, "first"),
+                    2 => write!(f, "second"),
                     3 => write!(f, "third"),
                     n => {
                         let two_digits = n % 100;
@@ -329,4 +329,59 @@ macro_rules! ordinal {
     ($n:literal . $($ty:ident)?) => {
         $crate::ordinal1 $(::<$crate::$ty>)? ($n)
     };
+}
+
+#[cfg(test)]
+mod tests {
+    use super::*;
+
+    #[test]
+    fn first_from0() {
+        let first_o_from0 = Osize::from0(0);
+
+        assert_eq!(&first_o_from0.to_string(), "first");
+    }
+
+    #[test]
+    fn first_from1() {
+        let first_o_from1 = Osize::from1(1);
+        assert_eq!(&first_o_from1.to_string(), "first");
+    }
+
+    #[test]
+    fn second_from0() {
+        let second_o_from0 = Osize::from0(1);
+        assert_eq!(&second_o_from0.to_string(), "second");
+    }
+
+    #[test]
+    fn second_from1() {
+        let second_o_from1 = Osize::from1(2);
+
+        assert_eq!(&second_o_from1.to_string(), "second");
+    }
+
+    #[test]
+    fn third_from0() {
+        let third_o_from0 = Osize::from0(2);
+        assert_eq!(&third_o_from0.to_string(), "third");
+    }
+
+    #[test]
+    fn third_from1() {
+        let third_o_from1 = Osize::from1(3);
+        assert_eq!(&third_o_from1.to_string(), "third");
+    }
+
+    #[test]
+    fn fourth_from0() {
+        let fourth_o_from0 = Osize::from0(3);
+        assert_eq!(&fourth_o_from0.to_string(), "4th");
+    }
+
+    #[test]
+    fn fourth_from1() {
+        let fourth_o_from1 = Osize::from1(4);
+        assert_eq!(&fourth_o_from1.to_string(), "4th");
+    }
 }
